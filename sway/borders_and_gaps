@@ -1,0 +1,20 @@
+# for more customization run `man 5 sway`.
+
+# setting border colors:
+# border = border color around the title-bar.
+# background = background color of the title-bar.
+# text = text color of the title-bar.
+# indicator = indicator color.
+# child_border = border color around the window view-port.
+# class                 border  backgr. text    indicat. child_border
+include ~/.cache/wal/colors-sway
+
+client.focused          $color4 $color0 $foreground $color3 $color4
+client.focused_inactive $color8 $color0 $foreground $color1 $color8
+client.unfocused        $color8 $color0 $foreground $color1 $color8
+client.urgent           $color1 $color4 $foreground $color3 $color1
+
+default_border pixel 6
+
+# the gaps in between to windows in tiling mode
+gaps inner 38

@@ -1,0 +1,12 @@
+# Enable global background blur
+blur enable
+
+# Optional blur adjustments
+blur_passes 3
+blur_radius 5
+
+# Enable blur for specific layer-shell components like Waybar
+layer_effects "waybar" {
+    blur enable
+    blur_ignore_transparent enable
+}

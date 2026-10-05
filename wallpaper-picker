@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+DIR="$HOME/Pictures/Wallpapers"
+
+selected="$(
+  find "$DIR" -type f \
+    \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) |
+    while read -r file; do
+      name="${file#$DIR/}"
+      printf '%s\0icon\x1f%s\n' "$name" "$file"
+    done |
+    rofi -dmenu \
+      -p "Wallpaper" \
+      -show-icons \
+      -theme-str '
+      window {
+          location: west;
+          anchor: west;
+          width: 420px;
+      }
+
+      mainbox {
+          children: [inputbar, listview];
+      }
+
+      inputbar {
+          padding: 10px;
+          spacing: 8px;
+      }
+
+      listview {
+          columns: 3;
+          lines: 4;
+          fixed-height: true;
+          fixed-columns: true;
+          spacing: 8px;
+          padding: 8px;
+      }
+
+      element {
+          orientation: vertical;
+          padding: 6px;
+          spacing: 5px;
+      }
+
+      element-icon {
+          size: 100px;
+          horizontal-align: 0.5;
+      }
+
+      element-text {
+          horizontal-align: 0.5;
+          vertical-align: 0.5;
+      }
+    '
+)"
+
+[ -z "$selected" ] && exit 0
+
+WALLPAPER="$DIR/$selected"
+
+awww img "$WALLPAPER" \
+  --transition-type fade \
+  --transition-duration 0.5
+
+pkill waybar
+pywalfox update
+wal -i "$WALLPAPER" -n
+
+pkill swaync
+swaync &
+disown
+
+printf '%s\n' "$WALLPAPER" >"$HOME/.cache/current-wallpaper"

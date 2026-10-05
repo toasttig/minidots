@@ -1,0 +1,22 @@
+
+[font]
+size = 14
+
+[font.normal]
+family = "Iosevka Nerd Font"
+style = "medium"
+
+[window]
+opacity = 0.8
+
+[terminal.shell]
+program = "/usr/bin/zsh"
+
+[general]
+import = [
+    "~/.cache/wal/colors-alacritty.toml"
+]
+
+[window.padding]
+x = 12
+y = 12

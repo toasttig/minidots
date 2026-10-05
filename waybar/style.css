@@ -1,0 +1,211 @@
+/* Pywal colors */
+@import url("/home/toasttig/.cache/wal/colors-waybar.css");
+
+/* Font */
+* {
+  font-family: "Iosevka Nerd Font";
+  font-size: 15px;
+}
+
+/* Brackets */
+#custom-openbracket,
+#custom-closebracket {
+  margin: 0 5px;
+}
+
+/* Waybar */
+window#waybar {
+  background-color: transparent;
+  border-bottom: 0;
+  color: @foreground;
+  transition: background-color 0.5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+/* Left island */
+.modules-left {
+  margin: 10px 0 0 10px;
+  padding: 0 0 0 7px;
+  background-color: alpha(@background, 0.7);
+  border: 2px solid @color1;
+}
+
+/* Center island */
+.modules-center {
+  margin: 10px 0 0 0;
+  padding: 0 10px;
+  background-color: alpha(@background, 0.7);
+  border: 2px solid @color1;
+}
+
+/* Right island */
+.modules-right {
+  margin: 10px 10px 0 0;
+  padding: 0 10px;
+  background-color: alpha(@background, 0.7);
+  border: 2px solid @color1;
+}
+
+/* Buttons */
+button {
+  border: none;
+}
+
+/* ───────────────────────────────────────────── */
+/* Left panel */
+/* ───────────────────────────────────────────── */
+
+/* Launcher / utilities */
+#custom-arch,
+#custom-powerprofile,
+#custom-themeswitcher {
+  padding-right: 10px;
+  padding-left: 5px;
+  font-size: 15px;
+  border-radius: 8px;
+}
+
+#custom-arch:hover,
+#custom-powerprofile:hover,
+#custom-themeswitcher:hover {
+  color: @color4;
+}
+
+/* Workspaces */
+#workspaces button {
+  min-width: 0;
+  padding: 0 8px;
+  background-color: transparent;
+  color: @foreground;
+  border-radius: 0;
+}
+
+#workspaces button:hover {
+  background-color: @color0;
+}
+
+#workspaces button.active {
+  color: @color7;
+  background-color: @color0;
+}
+
+#workspaces button.urgent {
+  background-color: @color1;
+}
+
+/* Workspace positioning */
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+/* Media player */
+#mpris {
+  margin: 0 0 0 5px;
+  padding: 0 9px;
+  background-color: @background;
+  color: @foreground;
+}
+
+#mpris.playing {
+  background-color: @color2;
+  border-radius: 2px;
+  color: @background;
+}
+
+/* ───────────────────────────────────────────── */
+/* Center */
+/* ───────────────────────────────────────────── */
+
+#window {
+  padding: 0 5px;
+}
+
+/* ───────────────────────────────────────────── */
+/* Right panel */
+/* ───────────────────────────────────────────── */
+
+/* General modules */
+#clock,
+#battery,
+#cpu,
+#memory,
+#custom-clipboard,
+#custom-bluetooth,
+#network {
+  padding: 0 10px;
+}
+
+/* Hover effects */
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#custom-clipboard:hover,
+#custom-bluetooth:hover,
+#network:hover,
+#idle_inhibitor:hover,
+#custom-swaync:hover,
+#backlight:hover,
+#wireplumber:hover {
+  color: @color4;
+}
+
+/* Idle inhibitor */
+#idle_inhibitor {
+  padding: 0 10px 0 0;
+}
+
+/* Power profile */
+#custom-powerprofile {
+  padding: 0 8px 0 4px;
+}
+
+/* Brightness / volume */
+#backlight,
+#wireplumber {
+  padding: 0 5px;
+}
+
+/* Muted volume */
+#wireplumber.muted {
+  background-color: @color5;
+}
+
+/* Notifications */
+#custom-swaync {
+  padding: 0 10px 0 5px;
+  font-size: 16px;
+  color: @foreground;
+}
+
+/* Battery */
+#battery.charging,
+#battery.plugged {
+  background-color: @color7;
+  color: @background;
+}
+
+#battery.critical:not(.charging) {
+  background-color: @color1;
+  color: @foreground;
+  animation: blink 0.5s steps(12) infinite alternate;
+}
+
+/* Battery blink */
+@keyframes blink {
+  to {
+    background-color: @color0;
+    color: @foreground;
+  }
+}
